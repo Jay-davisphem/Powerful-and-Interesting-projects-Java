@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
-javac *.java
+javac ./*.java
 java Test
+rm ./jdt* ./.meta* ./*.class -rf
+clear; echo "Welcome $(who)"

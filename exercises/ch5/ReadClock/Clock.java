@@ -85,7 +85,7 @@ class Clock{
   }
   public void draw(){
    frame = new JFrame(toStr(hour) + ":" + toStr(minute));
-   frame.setSize(1400, 900);
+   frame.setSize(600, 600);
    frame.setLocation(0, 0);
    frame.setVisible(true);
    
