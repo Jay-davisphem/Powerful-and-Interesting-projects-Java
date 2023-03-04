@@ -1,4 +1,6 @@
-class Fraction{
+package fracs;
+
+public class Fraction{
   private int _numerator;
   private int _denominator;
 
@@ -48,20 +50,32 @@ class Fraction{
       return b;
     return gcd(b, a%b);
   }
-
-  public String getInLowestTerm(){
+  public Fraction simplify(){
     int hcf = gcd(_numerator, _denominator);
-    return _numerator/hcf + "/" + _denominator/hcf;
+    return new Fraction(_numerator/hcf, _denominator/hcf);
+  }
+  public String getInLowestTerm(){
+    return simplify().toString();
   }
 
   public boolean equals(Fraction frac2){
     String frac1 = getInLowestTerm();
     return frac1.equals(frac2.getInLowestTerm());
   }
-
-  public static void main(String[] args){
-    Fraction frac1 = new Fraction(18, 24);
-    Fraction frac2 = new Fraction(3, 4);
-    System.out.println(frac1.equals(frac2));
+  public Fraction add(Fraction frac){
+    int sNum = this._numerator*frac._denominator + this._denominator*frac._numerator;
+    int sDen = this._denominator * frac._denominator;
+    return new Fraction(sNum, sDen);
+  }
+  public Fraction subtract(Fraction frac){
+    int sNum = this._numerator*frac._denominator - this._denominator*frac._numerator;
+    int sDen = this._denominator * frac._denominator;
+    return new Fraction(sNum, sDen);
+  }
+  public Fraction multiply(Fraction frac){
+    return new Fraction(this._numerator*frac._numerator, this._denominator*frac._denominator);
+  }
+  public Fraction divide(Fraction frac){
+    return new Fraction(this._numerator*frac._denominator, this._denominator*frac._numerator);
   }
 }

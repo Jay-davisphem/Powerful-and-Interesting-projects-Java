@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-javac ./*.java
-java Test
-rm ./jdt* ./.meta* ./*.class -rf
-clear; echo "Welcome $(who)"
+if javac ./*.java;
+then
+  java Test;
+  rm ./jdt* ./.meta* ./*.class -rf;
+  #clear; echo "Welcome $(who)";
+else
+  echo -e "Error during compilation\n";
+fi

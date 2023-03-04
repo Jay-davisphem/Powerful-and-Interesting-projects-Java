@@ -40,8 +40,20 @@ class Clock{
   private String toStr(int val){
     return val <= 9 ? "0"+val : ""+val;
   }
-  private double getMinuteAngle(){
-    return (90 - minute*6.0)*Math.PI/180;
+  private void drawRings(int shift){
+    try{
+      for(int min = 0; min < 5*12; min += 5){ 
+        double x = 200+100*Math.cos(getMinuteAngle(min)) - shift;
+        double y = 200-100*Math.sin(getMinuteAngle(min)) - shift;
+        g.fillOval((int)x, (int)y, 10, 10);
+        Thread.sleep(SLEEP_TIME);
+        g.fillOval((int)x, (int)y, 10, 10);
+      }
+    }catch(Exception e){}
+
+  }
+  private double getMinuteAngle(int myMin){
+    return (90 - myMin*6.0)*Math.PI/180;
   }
   private void drawRim(){
     try{
@@ -59,8 +71,8 @@ class Clock{
       Thread.sleep(SLEEP_TIME);
       g.drawLine(200, 200, (int)toX, (int)toY);
       
-      toX = 200+70*Math.cos(getMinuteAngle());
-      toY = 200-70*Math.sin(getMinuteAngle());
+      toX = 200+70*Math.cos(getMinuteAngle(minute));
+      toY = 200-70*Math.sin(getMinuteAngle(minute));
       Thread.sleep(SLEEP_TIME);
       g.setColor(Color.BLACK);
       g.drawLine(200, 200, (int)toX, (int)toY);
@@ -95,7 +107,7 @@ class Clock{
    drawRim();
    drawHands();
    writeClockString();
-
+   drawRings(5);
    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
 }
