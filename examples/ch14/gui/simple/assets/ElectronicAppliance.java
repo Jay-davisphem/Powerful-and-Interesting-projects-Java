@@ -1,12 +1,13 @@
-package assets.electronicappliance;
+package assets.electronics;
 
 import assets.asset.*;
 
-class ElectronicAppliance extends Asset{
+public class ElectronicAppliance extends Asset{
   protected double powerUsage;
   protected int voltage, waltage;
 
   public ElectronicAppliance(){
+    super();
   }
 
   public void turnOn(){
@@ -17,5 +18,9 @@ class ElectronicAppliance extends Asset{
   }
   public int getTemperature(){
     return 100;
+  }
+  public static void main(String[] args){
+    Asset asset = new ElectronicAppliance();
+    System.out.println(asset);
   }
 }
