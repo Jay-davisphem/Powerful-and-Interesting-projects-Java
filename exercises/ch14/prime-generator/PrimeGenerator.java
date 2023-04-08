@@ -30,7 +30,6 @@ class PrimeGenerator extends JFrame implements ActionListener{
    
     genButton = new JButton("Generate");
     genButton.setBackground(Color.white);
-    textArea.setEditable(false);
     container1.add(genButton);
    
     inputLine.addActionListener(this);
@@ -38,7 +37,7 @@ class PrimeGenerator extends JFrame implements ActionListener{
 
     textArea = new JTextArea();
     textArea.setColumns(29);
-    textArea.setRows(30);
+    textArea.setRows(20);
     textArea.setBorder(BorderFactory.createLineBorder(Color.black));
     textArea.setEditable(false);
     JScrollPane pane = new JScrollPane(textArea);
