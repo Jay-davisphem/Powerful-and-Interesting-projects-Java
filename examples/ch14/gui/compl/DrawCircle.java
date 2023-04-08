@@ -16,7 +16,7 @@ class DrawCircle extends JFrame implements MouseListener{
   public DrawCircle(){
     setTitle("Draw circles.");
     setSize(500, 500);
-    setLocation(100, 100);
+    setLocation(0, 0);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     container = getContentPane();
     addMouseListener(this);
@@ -27,8 +27,9 @@ class DrawCircle extends JFrame implements MouseListener{
   }
 
   private void drawCircle(int x, int y){
+    System.out.println(x + ", " + (y-37));
     Graphics g = container.getGraphics();
-    g.drawOval(x - CIRCLE_RADIUS/2, y - CIRCLE_RADIUS, CIRCLE_RADIUS, CIRCLE_RADIUS);
+    g.drawOval(x - CIRCLE_RADIUS/2, y - CIRCLE_RADIUS/2 - 37,  CIRCLE_RADIUS, CIRCLE_RADIUS);
   }
   public void mouseClicked(MouseEvent event){
     if (event.getClickCount() == DOUBLE_CLICK) {
