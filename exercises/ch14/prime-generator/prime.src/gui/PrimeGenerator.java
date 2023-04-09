@@ -15,6 +15,18 @@ public class PrimeGenerator extends JFrame implements ActionListener{
     frame.setVisible(true);
   }
 
+  public PrimeGenerator(){
+    Container parentContainer = getRootContainer();
+
+    Container container1 = getPane();
+    Container container2 = getPane();
+   
+    JScrollPane pane = setUpScreen();
+    joinPanes(parentContainer, container1, container2, pane);
+
+    setDefaultCloseOperation(EXIT_ON_CLOSE);
+  }
+
   private Container getRootContainer(){
     Container parentContainer = getContentPane();
     setSize(500, 500);
@@ -55,17 +67,6 @@ public class PrimeGenerator extends JFrame implements ActionListener{
     child2.add(pane);
     parent.add(child1, BorderLayout.NORTH);
     parent.add(child2, BorderLayout.CENTER);
-  }
-  public PrimeGenerator(){
-    Container parentContainer = getRootContainer();
-
-    Container container1 = getPane();
-    Container container2 = getPane();
-   
-    JScrollPane pane = setUpScreen();
-    joinPanes(parentContainer, container1, container2, pane);
-
-    setDefaultCloseOperation(EXIT_ON_CLOSE);
   }
 
   private void printText(int[] primes, int maxPerLine){
